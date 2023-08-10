@@ -12,15 +12,8 @@ import io.cucumber.testng.AbstractTestNGCucumberTests;
 //@RunWith(Cucumber.class)
 @CucumberOptions(
 		
-		//features = {".//Features/CustomerRegistration.feature",".//Features/CustTwoWheelerReg.feature"},
-		features = {".//Features/CustomerRegistration.feature",".//Features/CustomerTwoWheelerRegMobile.feature"},
-	//tags = "@CustomerRegistration1",
-
-		//CustomerLoginFeature.feature"
-		//CustomerRegistration.feature
-		//CustomerTwoWheelerRegMobile.feature
-		//CustTwoWheelerReg.feature
-		//MobileCustomerRegistration.feature
+		features = {".//Features//AmarRajaMobileRegistration.feature"},
+	    tags = "@Sanity",
 		
 
 		

@@ -44,7 +44,7 @@ public class CustomerRegistrationMobile {
 	    driver.findElement(AppiumBy.id("com.android.permissioncontroller:id/permission_allow_one_time_button")).click();
 	    driver.findElement(AppiumBy.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.widget.ImageView[1]")).click();
 	    driver.findElement(AppiumBy.accessibilityId("Sign in")).click();
-	    //ppp)
+	   
 	    Thread.sleep(10000);
 	    driver.findElement(AppiumBy.xpath("//android.widget.EditText")).click();
 	    driver.findElement(AppiumBy.xpath("//android.widget.EditText")).sendKeys("9591074112");

@@ -96,6 +96,7 @@ public class StepDef extends BaseClass {
 			UiAutomator2Options Androidoptions = new UiAutomator2Options();
 			//AndroidDriver driver;
 			Androidoptions = new UiAutomator2Options();
+		//	Androidoptions.setCapability("automationName", "Flutter");
 			Androidoptions.setCapability("appium:platformVersion", "11");
 			Androidoptions.setCapability("appium:appPackage", "com.arbl.amaron");
 			Androidoptions.setCapability("appium:appActivity", "com.arbl.amaron.MainActivity");

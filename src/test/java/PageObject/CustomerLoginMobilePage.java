@@ -6,6 +6,8 @@ import java.util.List;
 import org.apache.commons.lang.RandomStringUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.RemoteWebDriver;
+
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.MobileBy;
 
@@ -15,6 +17,8 @@ import org.openqa.selenium.support.PageFactory;
 import StepDefinition.BaseClass;
 import Utitlities.ReadConfig;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.remote.SupportsContextSwitching;
+import io.github.ashwith.flutter.FlutterFinder;
 
 public class CustomerLoginMobilePage {
 	
@@ -46,24 +50,26 @@ public class CustomerLoginMobilePage {
 	WebElement reg;
 	WebElement text;
 	WebElement verify;
-	
+	FlutterFinder finder;
 	static String serialno = "FEG6244W300"+RandomStringUtils.randomNumeric(3);
 	public CustomerLoginMobilePage(AndroidDriver driver)
 	{
 		ldriver=driver;
+		finder = new FlutterFinder(ldriver);
 
 		PageFactory.initElements(driver, this);
+		
 				
 	}
 	
-		
+	
     public void clickAllow() throws InterruptedException
     {
     	//Thread.sleep(4000);
     	allow= ldriver.findElement(AppiumBy.id("com.android.permissioncontroller:id/permission_allow_one_time_button"));
     	allow.click();
 
-    	
+    	Thread.sleep(5000);
 	    Imageview= ldriver.findElement(AppiumBy.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.widget.ImageView[1]"));
     	Imageview.click();
 
@@ -86,7 +92,7 @@ public class CustomerLoginMobilePage {
 	    
     	Signin=ldriver.findElement(AppiumBy.accessibilityId("Sign In"));
     	Signin.click();
-	    //Thread.sleep(7000);
+	    Thread.sleep(3000);
 	    
 	    //driver.findElement(AppiumBy.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View[7]/android.widget.EditText")).sendKeys("123456");
 	    Otp=  ldriver.findElement(AppiumBy.className("android.widget.EditText"));
@@ -143,10 +149,19 @@ customermobile.sendKeys(readConfig.getPhoneNumber());
     				
     }
     
+    public void enterspecificCustMobileno()
+    {
+    	customermobile=ldriver.findElement(AppiumBy.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.ScrollView/android.widget.EditText[4]"));
+    	customermobile.click();
+    	customermobile.sendKeys("6678109721");
+    	
+    }
+    
     public void enterSellercode()
     {
-    	//sellercode="";
-    			sellercode.click();
+    sellercode=ldriver.findElement(AppiumBy.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.ScrollView/android.widget.EditText[5]"));
+    sellercode.click();
+    sellercode.sendKeys("10012209");
     }
     
     public void selectmake() throws InterruptedException
@@ -160,56 +175,82 @@ customermobile.sendKeys(readConfig.getPhoneNumber());
  	    ldriver.hideKeyboard(); 
     	Ford = ldriver.findElement(AppiumBy.xpath("//android.view.View[@content-desc=\"FORD\"]/preceding-sibling::android.widget.ImageView"));
     	Ford.click();
+    	
+    	
+		
     			
     }
     
     public void selectSegment() throws InterruptedException
     {
     	
+    	
+    	
+    	   ldriver.hideKeyboard();
+
+      selectsegment =ldriver.findElement(AppiumBy.accessibilityId("Select Segment"));
+
+      selectsegment =ldriver.findElement(AppiumBy.accessibilityId("Select Segment"));
+
+      
+  	BaseClass.wait_element_visible(selectsegment);
+
+		((SupportsContextSwitching) ldriver).context("FLUTTER");
+
+    	
      //Thread.sleep(2000);
     	
-    	
-    	WebElement image = ldriver.findElement(AppiumBy.xpath("//android.view.View[@content-desc=\"Change\"]/preceding-sibling::android.widget.ImageView"));
-    	
-    	BaseClass.wait_element_visible(image);
-    
-     selectsegment =ldriver.findElement(AppiumBy.accessibilityId("Select Segment"));
-//    selectsegment.click();
-	   //Thread.sleep(4000);
-     
-     ldriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
-
-     
-     BaseClass.retryClick(selectsegment);
-     
-     ldriver.manage().timeouts().implicitlyWait(Duration.ofMinutes(1));
-
-     
-//   ldriver.manage().timeouts().implicitlyWait(2, null);
-   ldriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
-
+//    	
+//    	WebElement image = ldriver.findElement(AppiumBy.xpath("//android.view.View[@content-desc=\"Change\"]/preceding-sibling::android.widget.ImageView"));
+//    	
+//    	BaseClass.wait_element_visible(image);
+//    
+//     selectsegment =ldriver.findElement(AppiumBy.accessibilityId("Select Segment"));
+////    selectsegment.click();
+//	   //Thread.sleep(4000);
+//     
+//     ldriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+//
+//     
+//     BaseClass.retryClick(selectsegment);
+//     
+//     ldriver.manage().timeouts().implicitlyWait(Duration.ofMinutes(1));
+//
+//     
+////   ldriver.manage().timeouts().implicitlyWait(2, null);
+//   ldriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+//
+//   
+//   List<WebElement> elems = ldriver.findElements(AppiumBy.accessibilityId("CAR"));
+//   
+//   ldriver.manage().timeouts().implicitlyWait(Duration.ofMinutes(1));
+//
+//   
+//   if(elems.size() == 0)
+//   {
+//       selectsegment =ldriver.findElement(AppiumBy.accessibilityId("Select Segment"));
+//       
+//       ldriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+//
+//
+//   	BaseClass.retryClick(selectsegment);
+//   	
+//    ldriver.manage().timeouts().implicitlyWait(Duration.ofMinutes(1));
+//
+//   }
+//   
+//   car = ldriver.findElement(AppiumBy.accessibilityId("CAR"));
+//
+//   
+//   car.click();
    
-   List<WebElement> elems = ldriver.findElements(AppiumBy.accessibilityId("CAR"));
-   
-   ldriver.manage().timeouts().implicitlyWait(Duration.ofMinutes(1));
 
-   
-   if(elems.size() == 0)
-   {
-       selectsegment =ldriver.findElement(AppiumBy.accessibilityId("Select Segment"));
-       
-       ldriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
-
-
-   	BaseClass.retryClick(selectsegment);
-   	
-    ldriver.manage().timeouts().implicitlyWait(Duration.ofMinutes(1));
-
-   }
-   
-   car = ldriver.findElement(AppiumBy.accessibilityId("CAR"));
-
-   
+   WebElement element = finder.byText("Select Segment");
+//  String treeString = (String) driver.executeScript("flutter: getRenderTree");
+   ldriver.executeScript("flutter:waitFor", element, 100);
+   element.click();
+   Thread.sleep(3000);
+   WebElement car = finder.byText("CAR");
    car.click();
 	
      
@@ -218,24 +259,38 @@ customermobile.sendKeys(readConfig.getPhoneNumber());
     
     public void selectModel() throws InterruptedException
     {
-    	selectModel=ldriver.findElement(AppiumBy.accessibilityId("Select Model"));
-    	selectModel.click();
-    //Thread.sleep(4000);
-    Figo=ldriver.findElement(AppiumBy.accessibilityId("Figo"));
-    Figo.click();
+//    	selectModel=ldriver.findElement(AppiumBy.accessibilityId("Select Model"));
+//    	selectModel.click();
+//    //Thread.sleep(4000);
+//    Figo=ldriver.findElement(AppiumBy.accessibilityId("Figo"));
+//    Figo.click();
+    	
+    	WebElement model = finder.byText("Select Model");
+	    model.click();
+	    
+	    WebElement Aura = finder.byText("Aspire");
+	    Aura.click();
+    
+   
     	
     }
     public void selectFueltype() throws InterruptedException
     {
-    	selectFuel= ldriver.findElement(AppiumBy.accessibilityId("Select Fuel Type"));
+//    	selectFuel= ldriver.findElement(AppiumBy.accessibilityId("Select Fuel Type"));
+//    	
+//        BaseClass.retryClick(selectFuel);
+//
+//        
+////    	selectFuel.click();
+//	    //Thread.sleep(4000);
+//	    Pertol=ldriver.findElement(AppiumBy.accessibilityId("Petrol"));
+//	    Pertol.click();
     	
-        BaseClass.retryClick(selectFuel);
-
-        
-//    	selectFuel.click();
-	    //Thread.sleep(4000);
-	    Pertol=ldriver.findElement(AppiumBy.accessibilityId("Petrol"));
-	    Pertol.click();
+    	 WebElement Fuel = finder.byText("Select Fuel Type");
+		    Fuel.click();
+		    
+		    WebElement diesel = finder.byText("Diesel");
+		    diesel.click();
     }
     
     public void clickCheckbox()
@@ -258,6 +313,8 @@ customermobile.sendKeys(readConfig.getPhoneNumber());
     
     public void enterOtp() throws InterruptedException
     {
+    	Thread.sleep(6000);
+    	BaseClass.wait_element_visible(ldriver.findElement(AppiumBy.className("android.widget.EditText")));
     	enterOtp=ldriver.findElement(AppiumBy.className("android.widget.EditText"));
     	enterOtp.click();
     	enterOtp.sendKeys("123456");
@@ -272,11 +329,12 @@ customermobile.sendKeys(readConfig.getPhoneNumber());
     	verify = ldriver.findElement(AppiumBy.accessibilityId("Verify"));
     	verify.click(); 
 	    
-	    //Thread.sleep(4000);
+	    Thread.sleep(6000);
     }
     
     public void checkRegSuccessful()
     {
+    	BaseClass.wait_element_visible(ldriver.findElement(AppiumBy.accessibilityId("Registration Successful")));
       reg=ldriver.findElement(AppiumBy.accessibilityId("Registration Successful"));
       reg.click();
 	    
@@ -309,6 +367,12 @@ customermobile.sendKeys(readConfig.getPhoneNumber());
 	    }
     }
     
+    
+    public String alertTextVerification()
+	{
+		String alerttext = "Please use customer Mobile No/ email for Registration. You can’t use the same email/Mobile No in more than 10 Transactions.?";
+		return alerttext;
+	}
     
     
     

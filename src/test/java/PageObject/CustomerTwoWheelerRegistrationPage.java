@@ -352,5 +352,11 @@ public class CustomerTwoWheelerRegistrationPage {
 	    sellercode.click();
 	    sellercode.sendKeys("10012209");
 	}
+	
+	public String alertTextVerification()
+	{
+		String alerttext = "Please use customer Mobile No/ email for Registration. You can’t use the same email/Mobile No in more than 10 Transactions.?";
+		return alerttext;
+	}
 }
 

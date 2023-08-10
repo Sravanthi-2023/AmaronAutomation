@@ -163,16 +163,37 @@
 			<version>5.2.3</version>
 
 		</dependency>
+		
+ 
+<!--  https://mvnrepository.com/artifact/io.github.testsigma-eng/appium-flutterfinder-java 
+<dependency>
+<groupId>io.github.testsigma-eng</groupId>
+<artifactId>appium-flutterfinder-java</artifactId>
+<version>0.1.1</version>
+</dependency>-->
+
+<!-- https://mvnrepository.com/artifact/io.github.ashwithpoojary98/appium_flutterfinder_java -->
+<dependency>
+<groupId>io.github.ashwithpoojary98</groupId>
+<artifactId>appium_flutterfinder_java</artifactId>
+<version>1.0.1</version>
+</dependency>
+
+<!-- https://mvnrepository.com/artifact/org.jetbrains.kotlinx/kotlinx-serialization-runtime -->
+<dependency>
+<groupId>org.jetbrains.kotlinx</groupId>
+<artifactId>kotlinx-serialization-runtime</artifactId>
+<version>0.14.0</version>
+<scope>runtime</scope>
+</dependency>
 <dependency>
 <groupId>io.appium</groupId>
 <artifactId>java-client</artifactId>
 <version>8.5.1</version>
 </dependency> 
 
-	</dependencies>
-	
-	
 
+	</dependencies>
 	<build>
 		<pluginManagement><!-- lock down plugins versions to avoid using Maven 
 				defaults (may be moved to parent pom) -->
